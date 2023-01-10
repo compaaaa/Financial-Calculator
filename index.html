@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Financial Calculator</title>
+    <script>
+        // SHARED GLOBAL VARIABLE WITH NO VALUE *YET*!
+        let answer;  // = window.answerField
+        let number1; // = window.number1Field
+        let number2; // = window.number2Field
+
+        function onAddBtnClicked() {
+            answer.value = Number(number1.value) + Number(number2.value)
+        }
+
+        function onSubtractBtnClicked() {
+            answer.value = Number(number1.value) - Number(number2.value)
+        }
+
+        function onMultiplyBtnClicked() {
+            answer.value = Number(number1.value) * Number(number2.value)
+        }
+
+        function onDivideBtnClicked() {
+            answer.value = Number(number1.value) / Number(number2.value)
+        }
+
+        function init() {
+            //NOW THAT THE PAGE IS LOADED WE CAN PUT VALUES IN THE GLOBALS FROM THE PAGE/WINDOW/DOCUMENT
+            answer = window.answerField;
+            number1 = window.number1Field;
+            number2 = window.number2Field;
+
+            //SET FOCUS
+            number1.focus();
+
+            //ALTERNATIVE TO ADDING THE ONCLICK ATTRIBUTE IN THE HTML BELOW
+            document.getElementById("multiply").addEventListener("click", onMultiplyBtnClicked);
+            document.getElementById("divide").addEventListener("click", onDivideBtnClicked);
+        }
+
+        window.onload = init;
+        // document.addEventListener("DOMContentLoaded", init);
+    </script>
+</head>
+
+<body style="font-family: sans-serif; background-color:antiquewhite;">
+    Number 1: <input id="number1Field" type="number"><br><br>
+    Number 2: <input id="number2Field" type="number">
+    <p>
+        <button id="add" onclick="onAddBtnClicked()">Add</button>
+        <button id="subtract" onclick="onSubtractBtnClicked()">Subtract</button>
+        <button id="multiply">Multiply</button>
+        <button id="divide">Divide</button>
+    </p>
+    Answer: <input id="answerField" readonly>
+</body>
+
+</html>
